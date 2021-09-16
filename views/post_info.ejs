@@ -1,0 +1,25 @@
+<ul id="postlist">
+<div id="post-<%= post._id %>">
+    <li>
+        <p><h2><%= post.content %></h2><br> 
+        <small>
+            <%=post.user.name %><br>
+            <% if(locals.user && locals.user.id == post.user.id){ %>
+                <a class="deletePostAnchor" href="/posts/delete/<%= post._id %>">delete post</a>
+            <% } %>
+            <% if(locals.user){ %>
+                <a class="Likes" href="/likes/?tag=Post&id=<%= post._id %> " data-likes="<%= post.likes.length %>"><%=post.likes.length %> Like</a>
+            <% } else { %>
+                <%=post.likes.length %> Like
+            <% } %>
+        </small>
+        </p> 
+    </li>
+    <%- include('./_comment'); -%>
+</div>
+</ul>
+
+<script src='/js/post.js'></script>
+<script src='/js/comment.js'></script>
+<script src='/js/like.js'></script>
+<script src='/js/friend.js'></script>

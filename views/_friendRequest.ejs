@@ -1,0 +1,76 @@
+<div id="peopleForm">
+    <h2>Friend</h2>
+        <div id="Friendusers">
+            <ul id="FriendusersList">    
+            <% for(u of Friendusers){ %>
+                <% if (locals.user.id != u.id){ %>
+                    <div id="usersProfile-<%= u._id %>">
+                    <small>
+                        <li>
+                        <a  href="/profile/<%= u._id %>"><%=u.name %></a>
+                        <a class="toggle_friend" href="/friends/addRemoveFriend/?task=Remove&id=<%= u._id %>"> Remove Friend </a>
+                        <a class="chatwithFriend" href="/friends/chat/?id=<%= u._id %>"> Chat </a>
+                        </li>
+                    </small><br>
+                    </div>
+                <% } %>
+            <% } %>
+            </ul>
+        </div>
+
+    <h2>People You May Know</h2>
+        <div id="Generalusers">
+        <ul id="GeneralusersList">   
+            <% for(u of Generalusers){ %>
+                <% if (locals.user.id != u.id){ %>
+                    <div id="usersProfile-<%= u._id %>">
+                    <small>
+                        <li>
+                        <a href="/profile/<%= u._id %>"><%=u.name %></a>
+                        <a class="toggle_friend" href="/friends/addRemoveFriend/?task=Add&id=<%= u._id %>"> Add Friend </a>
+                        </li>
+                    </small><br>
+                    </div>
+                <% } %>
+            <% } %>
+        </ul>
+        </div>
+
+    <h2>Friend Requests</h2>
+        <div id="FriendRequest">
+            <ul id="FriendRequestList">    
+            <% for(u of Friendrequest){ %>
+                <% if (locals.user.id != u.id){ %>
+                    <div id="usersProfile-<%= u._id %>">
+                    <small>
+                        <li>
+                        <a  href="/profile/<%= u._id %>"><%=u.name %></a>
+                        <a class="toggle_friend" href="/friends/addRemoveFriend/?task=Accept&id=<%= u._id %>"> Accept </a>
+                        <a class="toggle_friend" href="/friends/addRemoveFriend/?task=Reject&id=<%= u._id %>"> Reject </a>
+                        </li>
+                    </small><br>
+                    </div>
+                <% } %>
+            <% } %>
+            </ul>
+        </div>
+
+    <h2>Pending Requests</h2>
+        <div id="PendingRequest">
+            <ul id="PendingRequestList">    
+            <% for(u of PendingRequest){ %>
+                <% if (locals.user.id != u.id){ %>
+                    <div id="usersProfile-<%= u._id %>">
+                    <small>
+                        <li>
+                        <a  href="/profile/<%= u._id %>"><%=u.name %></a>
+                        <a class="toggle_friend" href="/friends/addRemoveFriend/?task=Cancel&id=<%= u._id %>"> Cancel Request </a>
+                        
+                        </li>
+                    </small><br>
+                    </div>
+                <% } %>
+            <% } %>
+            </ul>
+        </div>
+    </div>

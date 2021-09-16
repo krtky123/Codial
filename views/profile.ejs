@@ -1,0 +1,52 @@
+<!-- <html>
+
+    <head>
+        <title> <%= title %> </title>
+    </head>
+
+    <body>
+
+        partials
+        <%- include('./_header'); -%> -->
+        
+        <div class="container">
+            <div class="leftpane">
+                <% if (locals.user){ %>
+                    Profile<br>
+                    <%= locals.user.name %><br>
+                    <%= locals.user.email %>
+                    <img src=<%= user.avatar %> width="100px">
+                <% }else{ %>
+                    Create New Account <a href="/signup">Signup </a><br>
+                    Already a user <a href="/signin">SignIn </a>
+
+                <% } %>
+                
+            </div>
+            <div class="middlepane">Test Page
+                <%- include('./_post'); -%>
+            </div>
+            <div class="rightpane">
+                <% if (locals.user){ %>
+                    <%- include('./_friendRequest') -%>
+                    
+                    
+                <% } %>
+            </div>
+
+       
+
+
+         
+        <script src='/js/post.js'></script>
+        <script src='/js/comment.js'></script>
+        <script src='/js/like.js'></script>
+        <script src='/js/friend.js'></script>
+
+        <!-- partials -->
+        <!-- <%- include('./_footer'); -%>
+        
+    </body>
+
+</html> -->
+

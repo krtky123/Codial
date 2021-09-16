@@ -1,0 +1,41 @@
+
+
+
+<section>
+    <h4>posts</h4>
+    <% if(locals.user){ %>
+    <form action="/posts/create/" id="postformCreate" method="POST">
+        <textarea id="posttextarea" name="content" cols="30" rows="3" placeholder="type here..." required></textarea>
+        <input type="submit" value="Post">
+    </form>
+    <% } %>
+
+
+
+</section>
+
+<ul id="postlist">
+    <% for(post of post){ %>
+        <div id="post-<%= post._id %>">
+        <li>
+            <p><h2><%= post.content %></h2><br> 
+            <small>
+                <%=post.user.name %><br>
+                <% if(locals.user && locals.user.id == post.user.id){ %>
+                    <a class="deletePostAnchor" href="/posts/delete/<%= post._id %>">delete post</a>
+                <% } %>
+                <% if(locals.user){ %>
+                    <a class="Likes" href="/likes/?tag=Post&id=<%= post._id %> " data-likes="<%= post.likes.length %>"><%=post.likes.length %> Like</a>
+                <% } else { %>
+                    <%=post.likes.length %> Like
+                <% } %>
+            </small>
+            </p> 
+        </li>
+        <a href="/posts/<%= post._id %> "> View</a>
+        <%- include('./_comment'); -%>
+        </div>
+    <% } %>
+</ul>
+
+
